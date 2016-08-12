@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="myApp", ng-controller="mainController">
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>{{"Work Hour Calculator"}}</h1>
+	<div>
+		<table style="width:100">
+		<tr>
+			<td>
+					User ID:
+			</td>
+			<td>
+					<input  type="text" ng-model="UID" ng-change = "updateUID(UID)"/>
+			</td>
+			<td>
+					- {{uidtest}}
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+					Hours: 
+			</td>
+			<td>
+					<input type="text" ng-model="Hours" ng-change = "updateHours(Hours)"/>
+			</td>
+			<td>
+					- {{hourstest}}
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+					Date:
+			</td>
+			<td>
+					{{date | date:'yyyy-MM-dd'}}
+			</td>
+		</tr>
+				
+		<tr>
+			<td>
+					
+			</td>
+			<td>
+					<button onclick="myFunction()">Send</button>
+
+			</td>
+		</tr>
+		</table>
+	</div>
+		<!------------- Test Section -------------->
+		<br><br>
+		<!------------- Test Section -------------->
+
+		<div>
+		Test passed : 
+		<table>
+			<tr>
+				<td>
+			test
+				</td>
+				<td>
+			{{result1}}
+				</td>
+			</tr>
+		</table>
+		</div>
+	</body>
+	
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="mainController.js"></script>
+    <script src="mainController.test.js"></script>
+
+</html>
