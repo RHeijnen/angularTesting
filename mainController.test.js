@@ -1,22 +1,22 @@
-describe('NavCtrl', function() {
-    var scope, $location, createController;
+describe('calculator', function () {
 
-    beforeEach(inject(function ($rootScope, $controller _$location_) {
-        $location = _$location_;
-        scope = $rootScope.$new();
+  beforeEach(module('calculatorApp'));
 
-        createController = function() {
-            return $controller('NavCtrl', {
-                '$scope': scope
-            });
-        };
-    }));
+  var $controller;
 
-    it('should have a method to check if the path is active', function() {
-        var controller = createController();
-        $location.path('/about');
-        expect($location.path()).toBe('/about');
-        expect(scope.isActive('/about')).toBe(true);
-        expect(scope.isActive('/contact')).toBe(false);
-    });
+  beforeEach(inject(function(_$controller_){
+    $controller = _$controller_;
+  }));
+
+  describe('sum', function () {
+		it('1 + 1 should equal 2', function () {
+			var $scope = {};
+			var controller = $controller('CalculatorController', { $scope: $scope });
+			$scope.x = 1;
+			$scope.y = 2;
+			$scope.sum();
+			expect($scope.z).toBe(3);
+		});	
+	});
+
 });
