@@ -1,11 +1,7 @@
-		var calculator = {
-			sum: function (x, y) {
-				return x + y;
-			},
-			subtract: function (x, y) {
-				return x - y;
-			},
-			divide: function (x, y) {
-				return (y === 0) ? 0 : x / y;
-			}
-		}
+var app = angular.module('myApp',[]);
+app.controller( 'DummyCtrl', function DummyCtrl($scope){
+   var doSomething = function() {
+      return "blah";
+   };
+   $scope.something=doSomething();
+})
