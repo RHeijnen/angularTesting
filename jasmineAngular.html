@@ -13,21 +13,34 @@
 	<script type="text/javascript">
 
 		// Basic calculator logic
-var app = angular.module('myApp',[]);
-app.controller( 'DummyCtrl', function DummyCtrl($scope){
-   var doSomething = function() {
-      return "blah";
-   };
-   $scope.something=doSomething();
-})
-
+var phonecatApp = angular.module('phonecatApp', []);
+ 
+phonecatApp.controller('PhoneListCtrl', function PhoneListCtrl($scope) {
+  $scope.phones = [
+    {'name': 'Nexus S',
+     'snippet': 'Fast just got faster with Nexus S.'},
+    {'name': 'Motorola XOOM™ with Wi-Fi',
+     'snippet': 'The Next, Next Generation tablet.'},
+    {'name': 'MOTOROLA XOOM™',
+     'snippet': 'The Next, Next Generation tablet.'}
+  ];
+});
 		// The tests
-	describe( 'DummyCtrl', function(){
-    var scope = {},
-        ctrl = new DummyCtrl(scope);
-    it('should do something', function(){
-        expect(scope.something).toMatch('blah');
+describe('PhoneCat controllers', function() {
+
+  describe('PhoneListCtrl', function(){
+
+    beforeEach(function() {
+      module('phonecatApp'); // <= initialize module that should be tested
     });
+
+    it('should create "phones" model with 3 phones', inject(function($controller) {
+      var scope = {},
+          ctrl = $controller('PhoneListCtrl', { $scope: scope });
+
+      expect(scope.phones.length).toBe(3);
+    }));
+  });
 });
 
 	</script>
