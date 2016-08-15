@@ -1,29 +1,86 @@
-var phonecatApp = angular.module('phonecatApp', []);
+
+		// Basic calculator logic
+var myTestApp = angular.module('myTestApp', []);
  
-phonecatApp.controller('PhoneListCtrl', function PhoneListCtrl($scope) {
-  $scope.phones = [
-    {'name': 'Nexus S',
-     'snippet': 'Fast just got faster with Nexus S.'},
-    {'name': 'Motorola XOOM™ with Wi-Fi',
-     'snippet': 'The Next, Next Generation tablet.'},
-    {'name': 'MOTOROLA XOOM™',
-     'snippet': 'The Next, Next Generation tablet.'}
-  ];
-});
+	myTestApp.controller('testController', function testController($scope) {
+		//private refference 
+		$scope.phones = [
+			{'name': 'Charlie Kelly',
+				'Title': ' Custodian / Charlie work'},
+			{'name': 'Dennis Reynolds',
+				'Title': 'Bartender'},
+			{'name': 'Frank Reynolds',
+				'Title': 'Owner'},
+			{'name': 'Dee Reynolds',
+				'Title': 'Bird'},
+			{'name': 'Ronald "mac" McDonald',
+				'Title': 'Security'}
+		];
+		// public refference
+		var doSomething = function() {
+			return "The nightman commeth";
+		};
+		$scope.something=doSomething();
+		
+	});
+	
 		// The tests
-describe('PhoneCat controllers', function() {
+	describe('Angular Jasmine Unit Testing', function() {
 
-  describe('PhoneListCtrl', function(){
+		describe('Its Always Sunny In Philadelphia', function(){
 
-    beforeEach(function() {
-      module('phonecatApp'); // <= initialize module that should be tested
-    });
+			beforeEach(function() {
+			module('myTestApp'); // <= initialize module that should be tested
+			});
 
-    it('should create "phones" model with 3 phones', inject(function($controller) {
-      var scope = {},
-          ctrl = $controller('PhoneListCtrl', { $scope: scope });
+			it('There should be 5 cast members on "Its Always Sunny In Philadelphia"-- (list-size)', inject(function($controller) {
+				var scope = {},
+				ctrl = $controller('testController', { $scope: scope });
 
-      expect(scope.phones.length).toBe(3);
-    }));
-  });
-});
+				expect(scope.phones.length).toBe(5);
+			}));
+			
+			it('The first should be Charlie-- (listindex)', inject(function($controller) {
+				var scope = {},
+				ctrl = $controller('testController', { $scope: scope });
+
+				expect(scope.phones[0].name).toBe("Charlie Kelly");
+			}));
+			
+			it('The Second should be Dennis-- (listindex)', inject(function($controller) {
+				var scope = {},
+				ctrl = $controller('testController', { $scope: scope });
+
+				expect(scope.phones[1].name).toBe("Dennis Reynolds");
+			}));
+			
+			it('The Third should be Frank-- (listindex)', inject(function($controller) {
+				var scope = {},
+				ctrl = $controller('testController', { $scope: scope });
+
+				expect(scope.phones[2].name).toBe("Frank Reynolds");
+			}));
+			
+			it('The Fourth should be Dee-- (listindex)', inject(function($controller) {
+				var scope = {},
+				ctrl = $controller('testController', { $scope: scope });
+
+				expect(scope.phones[3].name).toBe("Dee Reynolds");
+			}));
+			
+			it('The Fifth should be Dennis-- (listindex)', inject(function($controller) {
+				var scope = {},
+				ctrl = $controller('testController', { $scope: scope });
+
+				expect(scope.phones[4].name).toBe('Ronald "mac" McDonald');
+			}));
+			
+			it('Charlie wrote a musical-- (String)', inject(function($controller) {
+				var scope = {},
+				ctrl = $controller('testController', { $scope: scope });
+
+				expect(scope.something).toBe('The nightman commeth');
+			}));
+	
+		});
+	});
